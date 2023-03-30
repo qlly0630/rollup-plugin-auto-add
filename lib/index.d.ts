@@ -11,6 +11,7 @@ interface Options {
     inject: Inject[];
     include?: (string | RegExp)[];
     exclude?: (string | RegExp)[];
+    show?: boolean;
 }
 export default function rollupPluginAutoAdd(options: Options): {};
 export {};

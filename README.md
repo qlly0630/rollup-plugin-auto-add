@@ -55,7 +55,8 @@ import rollupPluginAutoAdd from 'rollup-plugin-auto-add'
 export default {
   plugins: [
     rollupPluginAutoAdd({
-      include: [/(src\/components)\S+(\/index.tsx)$/gi],
+      // match /root/my-project/src/components/*/index.tsx
+      include: [/src\/components\/(((?!\/).)+?)\/index\.tsx/gi],
       inject: [{ content: `import React from 'react';`, skip: [/import.*React.*'react';/g] }],
     }),
   ]
@@ -65,9 +66,14 @@ export default {
 ### include
 
 Type: `string[]`
-declare the directory of included files
+declare the directory of included files.
 
 ### exclude
 
 Type: `string[]`
-declare the file directories that are not included
+declare the file directories that are not included.
+
+### show
+
+Type: `boolean`
+if need to watch which files being matched, can be set to `true`.
